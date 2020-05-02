@@ -23,7 +23,7 @@ class fitness:
 
             # start gp loop
             fitnessLoop = 0
-            environment()
+            e = environment()
             c = cSettings()
             while True:
                 print("Generation " + str(fitnessLoop))
@@ -39,11 +39,11 @@ class fitness:
                 while i < len(gen):
                     # get fitness of gene and output
                     try:
-                        f = environment.evaluate(chrom = gen[i])
+                        f = e.evaluate(chrom = gen[i])
                     except Exception as e:
                         print("Failed to Evaluate " + str(e))
                         genFitness.append(0)
-                        continue
+                        break#continue
 
                     # sort out failures and timeouts
 
@@ -51,20 +51,24 @@ class fitness:
                     print("C" + str(i) + " fitness: " + str(f))
 
                     # save file
-                    fileOutput = open(destination + "/gen " + str(fitnessLoop) + "/" + str(f) + "f" + str(i) + ".py", 'w')
+                    fileOutput = open(destination + "/gen " + str(fitnessLoop) + "/" + str(f) + "_" + str(i) + ".py", 'w')
                     fileOutput.write(gen[i])
                     fileOutput.close()
 
                     i += 1
 
+                print("Average fitness: " + str(sum(genFitness)/len(genFitness)))
                 # check completion
                 if max(genFitness) >= targetFitness:
                     print("Solution found ending")
                     break
+                fitnessLoop += 1
+                if fitnessLoop >= 300:
+                    break
 
                 # create new generation
                 gen = c.cross(generation=gen, genFitness = genFitness)
-                fitnessLoop += 1
+
 
         except Exception as e:
             print(e.with_traceback(1))

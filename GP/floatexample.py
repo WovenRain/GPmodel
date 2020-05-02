@@ -8,23 +8,29 @@ from GP.fitness import fitness
 # the environment the code will be run in that will determine the fitness
 # the higher the fitness the better
 class environment:
-    @staticmethod
-    def evaluate(chrom):
-        x = 1
+    #@staticmethod
+    def evaluate(self, chrom):
+        self.x = 1
         # run the chromosome code
-        exec(chrom)
-        print(x)
+        exec(chrom, locals())
+        #print(self.x)
         try:
-            return 1/abs(x-3.141592)
+            return 1/abs(self.x-3.141592)
         except:
             return 10000000
 
 
 seedCode = [
-    "x = 1.1\nx = x/2 \nx += .1\nx +=.1",
-    "x = 2.2\nx -= .1\nx +=.1\nx +=.1",
-    "x = 1.1\nx = x/3\nx += x*2.1\nx +=.1",
-    "x = 1.1\nx = x/3\nx += x*3.1\nx -=.1"
+    "self.x = 1.1\nself.x = self.x/2 \nself.x += .1\nself.x +=.1",
+    "self.x = 2.2\nself.x -= .1\nself.x +=.1\nself.x +=.1",
+    "self.x = 1.1\nself.x = self.x/3\nself.x += self.x*2\nself.x +=.1",
+    "self.x = 11\nself.x = self.x/4\nself.x += self.x*2.1\nself.x +=.1",
+    "self.x = 1.1\nself.x = self.x/3\nself.x += self.x*2\nself.x +=1.1",
+    "self.x = 1\nself.x = self.x/2\nself.x += self.x*1.1\nself.x +=2.1",
+    "self.x = 1.1\nself.x = self.x/3\nself.x += self.x*2.1\nself.x +=.14",
+    "self.x = 1\nself.x = self.x/4\nself.x += self.x*3.1\nself.x +=.1",
+    "self.x = 1.1\nself.x = self.x/3\nself.x += self.x*2.1\nself.x +=.16",
+    "self.x = 1\nself.x = self.x/2\nself.x += self.x*4.1\nself.x -=1.19"
     # "x = 1.1\nwhile(x < 4):\n   x = x*3\n   x -= 1.4"
 ]
 
