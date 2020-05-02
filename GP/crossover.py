@@ -12,11 +12,11 @@ class crossover:
         }
 
         # each selection type will return 2 lists,
-        # both the size of the original, organised in some way for control of generation size
+        # organised in some way for control of generation size
         # which is checked at the end of each crossover method
         self.selectionType = {
             "EvenOdd": 0,
-            "BestHalf": 1
+            "BestOffset": 1
         }
 
         self.settings()
@@ -36,6 +36,22 @@ class crossover:
                 even = True
             i += 1
         return [list1, list2]
+    @staticmethod
+    def bestoffset(generation, ranked):
+        list1 = []
+        list2 = []
+
+        #offset the list by adding midrange chromosome
+        list1.append(generation[int(len(ranked)/2)+1])
+
+        i = 0
+        while i < len(ranked)/2:
+            #rest of the list is just best onwards
+            list1.append(generation[ranked[i]])
+            list2.append(generation[ranked[i]])
+            i += 1
+
+        return [list1, list2]
 
     @staticmethod
     def splitter(codeStr):
@@ -48,7 +64,7 @@ class crossover:
     def settings(self,
                  generation_size = -1,
                  crossover_type = "SinglePC",
-                 selection_type = "EvenOdd",
+                 selection_type = "BestOffset",
                  mut = 0.05):
         # default crossover type, selection, and mutation rate
         self.cType = self.crossoverType[crossover_type]
@@ -114,7 +130,8 @@ class crossover:
         newGen = []
         if self.cSelection == 0:
             lists = self.evenodd(generation, ranked)
-        # elif self.cSelection == 1:
+        elif self.cSelection == 1:
+            lists = self.bestoffset(generation, ranked)
 
         # Do crossover in sorted lists
         if self.cType == 0:
