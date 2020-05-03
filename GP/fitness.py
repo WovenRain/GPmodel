@@ -3,7 +3,9 @@ __author__ = 'Sophia Gold'
 from GP.crossover import crossover
 from datetime import datetime
 import os
+
 class fitness:
+
     def runGP(self, gen, environment,
               destination = "GPRun ",
               cSettings = crossover,
@@ -41,6 +43,10 @@ class fitness:
                     try:
                         f = e.evaluate(chrom = gen[i])
                     except Exception as e:
+                        # try to fix by the problem using e
+
+                        # if it doesnt fix then fail the chromosome
+
                         print("Failed to Evaluate " + str(e))
                         genFitness.append(0)
                         break#continue

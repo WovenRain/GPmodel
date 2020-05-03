@@ -2,6 +2,7 @@ __author__ = 'Sophia Gold'
 
 import numpy
 import random
+
 class crossover:
     def __init__(self):
         # if generation is odd size the bottom will always be dropped off
@@ -64,7 +65,7 @@ class crossover:
     def settings(self,
                  generation_size = -1,
                  crossover_type = "SinglePC",
-                 selection_type = "BestOffset",
+                 selection_type = "EvenOdd",
                  mut = 0.05):
         # default crossover type, selection, and mutation rate
         self.cType = self.crossoverType[crossover_type]
@@ -138,6 +139,7 @@ class crossover:
             newGen = self.singlepc(lists[0], lists[1])
         # elif self.cType == 1:
 
-        #mutate then return newGen
+        # mutate
+        # return newGen
         return newGen
 
