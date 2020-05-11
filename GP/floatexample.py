@@ -23,15 +23,15 @@ class environment:
 
 
 seedCode = [
-    "self.x = 1.1\nself.x = self.x/1.8\nself.x += .1\nself.x +=.1",
-    "self.x = 2.2\nself.x -= .1\nself.x +=.1\nself.x +=.1",
+    "self.x = 1.1\nself.x = self.x/1.8\nself.x += .741\nself.x +=.1",
+    "self.x = 2.2\nself.x -= .1\nself.x +=.1\nself.x +=.1111",
     "self.x += self.x*1.1\nself.x = self.x/3.5\nself.x += self.x*2\nself.x +=2.3",
     "self.x = 1.5\nself.x = self.x/4\nself.x += self.x*2.1\nself.x +=.1",
     "self.x = 11\nself.x = self.x/3\nself.x += self.x*2\nself.x +=1.1",
-    "self.x = 1\nself.x = self.x/2\nself.x += self.x*1.1\nself.x +=2.1",
+    "self.x = 10\nself.x = self.x/2\nself.x += self.x*1.1631\nself.x +=2.1",
     "self.x = 1\nself.x = self.x/3.2\nself.x += self.x*2.1\nself.x +=.14",
     "self.x += self.x*1.1\nself.x = self.x/4.1\nself.x += self.x*3.1\nself.x +=.1",
-    "self.x = 2.1\nself.x = self.x/3.1\nself.x += self.x*2.1\nself.x +=.16",
+    "self.x = 2.1\nself.x = self.x/3.1\nself.x += self.x*2.1\nself.x +=.168",
     "self.x += self.x*1.11\nself.x = self.x/2.5\nself.x += self.x*4.1\nself.x -=1.19"
 ]
 

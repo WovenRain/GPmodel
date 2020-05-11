@@ -39,9 +39,7 @@ class fitness:
                     # also stop from spending too much time on this
 
                     print("Failed to Evaluate " + str(e))
-                    genFitness.append(0)
-                    break #continue
-
+                    f = 0
 
                 genFitness.append(f)
                 print("C" + str(i) + " fitness: " + str(f))

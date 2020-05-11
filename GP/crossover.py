@@ -97,13 +97,21 @@ class crossover:
             # put 2 in 1s place
             j = splitAt
             while j < lines:
-                parentA[j] = parentB[j]
+                try:
+                    parentA[j] = parentB[j]
+                except:
+                    if len(parentA) < len(parentB):
+                        parentA.append(parentB[j])
                 j += 1
 
             # put reserve in 2
             j = splitAt
             while j < lines:
-                parentB[j] = reserve[j]
+                try:
+                    parentB[j] = reserve[j]
+                except:
+                    if len(parentA) > len(parentB):
+                        parentB.append(reserve[j])
                 j += 1
 
             # add altered parents to newGen
