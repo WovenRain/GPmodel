@@ -1,6 +1,7 @@
 __author__ = 'Sophia Gold'
 
 from GP.fitness import fitness
+import random
 
 # this will try to have the generated code give back float x at some mark
 # the code executed would mutate and switch simple functions
@@ -8,14 +9,15 @@ from GP.fitness import fitness
 # the environment the code will be run in that will determine the fitness
 # the higher the fitness the better
 class environment:
-    #@staticmethod
+    def __init__(self):
+        self.target = random.random()
+
     def evaluate(self, chrom):
         self.x = 1
         # run the chromosome code
         exec(chrom, locals())
-        #print(self.x)
         try:
-            return 1/abs(self.x-3.141592)
+            return 1/abs(self.x-self.target)
         except:
             return 10000000
 
