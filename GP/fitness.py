@@ -10,7 +10,8 @@ class fitness:
               destination = "GPRun ",
               cSettings = crossover,
               minFitnessToSave = 10.0,
-              targetFitness = 10000000):
+              targetFitness = 10000000,
+              generationRoundLimit = 1000):
         # put the date and time on the generated folder
         destination += str(datetime.now())
         destination = destination.replace(":", "")
@@ -58,7 +59,7 @@ class fitness:
                 print("Solution found ending")
                 break
             fitnessLoop += 1
-            if fitnessLoop >= 300:
+            if fitnessLoop >= generationRoundLimit:
                 break
 
             # create new generation
