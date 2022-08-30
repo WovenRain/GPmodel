@@ -1,6 +1,7 @@
 __author__ = 'Sophia Gold'
 
 from GP.fitness import fitness
+from GP.crossover import crossover
 import random
 
 # this will try to have the generated code give back float x at some mark
@@ -10,8 +11,8 @@ import random
 # the higher the fitness the better
 class environment:
     def __init__(self):
-        # self.target = random.random()
-        self.target = 3.141592653579
+        self.target = random.random()
+        # self.target = 6.16161616
 
     def evaluate(self, chrom):
         self.x = 1
@@ -129,7 +130,7 @@ seedCode = [
 
 if __name__ == '__main__':
     # run seedCode through fitness loop
-    print("start")
     fit = fitness()
-    #fit.runGP(seedCode, environment)
     fit.runGP(seedCode, environment)
+    #fit.runGP(seedCode, environment, savePath, crossoverSettings, saveThreshold, solutionLimit, NumberOfGenerations)
+    #fit.runGP(seedCode, environment, "6.16161616 ", crossover, 10.0, 10000, 1000)
